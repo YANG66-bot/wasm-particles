@@ -1,0 +1,17 @@
+# Rust build artifacts
+/target/
+
+# WASM build output
+/web/pkg/
+
+# Node / frontend caches
+node_modules/
+.npm/
+
+# Editor / OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
