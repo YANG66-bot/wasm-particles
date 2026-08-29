@@ -1,0 +1,42 @@
+[package]
+name = "wasm-particles"
+version = "0.1.0"
+edition = "2021"
+description = "Rust -> WASM 实时粒子物理引擎 (SPH 流体 + 形态汇聚), WebGL2 渲染"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+wasm-bindgen = "=0.2.127"
+js-sys = "0.3"
+
+[dependencies.web-sys]
+version = "0.3"
+features = [
+    "Window",
+    "Performance",
+    "console",
+    "HtmlCanvasElement",
+    "HtmlElement",
+    "Element",
+    "Node",
+    "EventTarget",
+    "MouseEvent",
+    "WheelEvent",
+    "DomRect",
+    "WebGl2RenderingContext",
+    "WebGlShader",
+    "WebGlProgram",
+    "WebGlBuffer",
+    "WebGlVertexArrayObject",
+    "WebGlUniformLocation",
+    "WebGlFramebuffer",
+    "WebGlTexture",
+]
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"

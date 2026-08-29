@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rust → WASM 粒子物理引擎</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="ui">
+  <header class="panel" id="title">
+    <h1>Rust <span class="arrow">→</span> WebAssembly</h1>
+    <p>粒子物理引擎 · SPH 流体 / 形态汇聚 · WebGL2 渲染</p>
+  </header>
+
+  <div class="panel" id="stats">
+    <div class="row"><span class="k">FPS</span><span class="v mono" id="st-fps">--</span></div>
+    <div class="row"><span class="k">粒子</span><span class="v mono" id="st-n">--</span></div>
+    <div class="row"><span class="k">物理</span><span class="v mono" id="st-sim">--</span></div>
+    <div class="row"><span class="k">渲染</span><span class="v mono" id="st-ren">--</span></div>
+    <div class="row"><span class="k">形态</span><span class="v mono" id="st-shape">--</span></div>
+  </div>
+
+  <div class="panel" id="controls">
+    <div class="modes">
+      <button class="btn mode active" data-mode="0">流体 SPH</button>
+      <button class="btn mode" data-mode="1">星云形态</button>
+      <button class="btn mode" data-mode="2">文字汇聚</button>
+    </div>
+
+    <div id="text-row" class="hidden">
+      <input id="text-input" type="text" maxlength="14" placeholder="输入文字…" value="RUST+WASM">
+      <button class="btn" id="text-go">汇聚</button>
+    </div>
+
+    <div class="slider-row">
+      <label>粒子 <span id="lb-count" class="mono">12000</span></label>
+      <input id="sl-count" type="range" min="2000" max="50000" step="1000" value="12000">
+    </div>
+    <div class="slider-row">
+      <label>重力 <span id="lb-grav" class="mono">3.2</span></label>
+      <input id="sl-grav" type="range" min="0" max="8" step="0.1" value="3.2">
+    </div>
+    <div class="slider-row">
+      <label>湍流 <span id="lb-turb" class="mono">0.55</span></label>
+      <input id="sl-turb" type="range" min="0" max="1.5" step="0.05" value="0.55">
+    </div>
+
+    <div class="actions">
+      <button class="btn ghost" id="bt-pause">暂停</button>
+      <button class="btn ghost" id="bt-reset">重置</button>
+      <button class="btn ghost" id="bt-shape">下一形态</button>
+    </div>
+  </div>
+
+  <footer id="hint">拖拽旋转 · 滚轮缩放 · 鼠标扰动粒子</footer>
+</div>
+
+<div id="err" class="hidden"></div>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
